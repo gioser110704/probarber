@@ -1,0 +1,68 @@
+{% extends "base.html" %} 
+
+{% block Titulo  %} Lista de Clientes {% endblock %}
+   
+{% block Contenido  %}    
+
+{% load static %}
+
+
+<div class="card">
+    <div class="card-header d-flex justify-content-end">
+        <a  name=""id=""class="btn btn-success"href="{% url 'crear_clientes'%}" role="button"> <i class="fas fa-plus-circle"></i> Agregar Nuevo Cliente </a>
+    </div>
+    <div class="card-body">
+
+        <h3 class="text-center">Clientes   <i class="fas fa-users"></i></h3>
+        
+        <div
+            class="table-responsive"
+        >
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Cedula</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Telefono</th>
+                        <th scope="col">Direccion</th>
+                        <th scope="col">Correo</th>
+                        <th scope="col">Fecha de registro</th>
+                        <th scope="col">Acciones</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    {% for Cliente in Cliente %}
+                    <tr class="">
+                        <td scope="row">{{ Cliente.cedula }}</td>
+                        <td>{{ Cliente.nombre }}</td>
+                        <td>{{ Cliente.apellido }}</td>
+                        <td>{{ Cliente.telefono }}</td>
+                        <td>{{ Cliente.direccion }}</td>
+                        <td>{{ Cliente.correo }}</td>
+                        <td>{{ Cliente.fecha_registro }}</td>
+                        <td> 
+                        <a name="" id="" class="btn btn-info" href="{% url 'editar_clientes' Cliente.cedula %}"  role="button" ><i class="fas fa-edit"></i></a>
+                        
+                        <a name="" id="" class="btn btn-danger" href="{% url 'eliminar_clientes' Cliente.cedula %}"  role="button"><i class="fas fa-trash-alt"></i></a>
+                    </tr>
+                    {% endfor %}
+
+
+                </tbody>
+            </table>
+        </div>
+        
+
+
+    </div>
+    <div class="card-footer text-muted">
+      
+    </div>
+</div>
+
+
+{% endblock %}
+
