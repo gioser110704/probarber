@@ -95,10 +95,10 @@ class clienteFormEdit(forms.ModelForm):
 
 class servicioForm(forms.ModelForm): 
     
-    nombre = forms.CharField(label = "Duracion del Servicio", widget= forms.TextInput(
+    nombre = forms.CharField(label = "Nombre del Servicio", widget= forms.TextInput(
         attrs = {
             'class': 'form-control',
-            'placeholder': 'Ingrese la Duracion del Servicio',
+            'placeholder': 'Ingrese el Nombre del Servicio"',
             'id': 'duracion',
             'required' : 'required',  } ))   
     
@@ -122,10 +122,10 @@ class servicioForm(forms.ModelForm):
         
 class servicioFormEdit(forms.ModelForm): 
     
-    nombre = forms.CharField(label = "Duracion del Servicio", widget= forms.TextInput(
+    nombre = forms.CharField(label = "Nombre del Servicio", widget= forms.TextInput(
         attrs = {
             'class': 'form-control',
-            'placeholder': 'Ingrese la Duracion del Servicio',
+            'placeholder': 'Ingrese el Nombre del Servicio',
             'id': 'duracion',
             'required' : 'required',  } ))   
     
@@ -284,3 +284,32 @@ class citaFormEdit(forms.ModelForm):
             'required' : 'required',}),
         
         },
+
+
+class especialidadForm(forms.ModelForm): 
+    
+    descripcion = forms.CharField(label = "Especialidad", widget= forms.TextInput(
+        attrs = {
+            'class': 'form-control',
+            'placeholder': 'Nombre de la especialidad',
+            'id': 'especialidad',
+            'required' : 'required',  } ))   
+    
+    
+    class Meta:
+        model = Especialidad
+        fields = '__all__'
+        
+class especialidadFormEdit(forms.ModelForm): 
+    
+    descripcion = forms.CharField(label = "Especialidad", widget= forms.TextInput(
+        attrs = {
+            'class': 'form-control',
+            'placeholder': 'Nombre de la especialidad',
+            'id': 'especialidad',
+            'required' : 'required',  } ))   
+    
+    
+    class Meta:
+        model = Especialidad
+        fields = '__all__'

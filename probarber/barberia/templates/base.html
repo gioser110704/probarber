@@ -22,7 +22,7 @@
 
  
 
-  <link rel="icon" type="image/x-icon" href="{% static 'index/img/logo.ico' %}">
+
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{% static 'lib/adminlite/plugins/fontawesome-free/css/all.min.css' %}">
   <!-- Tempusdominus Bootstrap 4 -->
@@ -86,7 +86,7 @@
                     <a class="nav-link" href="{% url 'servicios'%}">Servicios</a>
                     <a class="nav-link" href="{% url 'barberos'%}" tabindex="-1" aria-disabled="true">Barberos</a>
                     <a class="nav-link" href="{% url 'citas'%}">Citas</a>
-                    <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Especialidades</a>
+                    <a class="nav-link" href="{% url 'especialidad'%}" tabindex="-1" aria-disabled="true">Especialidades</a>
                 </div>
             </div>
         </div>

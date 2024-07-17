@@ -148,6 +148,37 @@ def eliminar_citas (request, id):
         messages.error(request, 'No se puede eliminar esta cita')
     return redirect('citas')
 
+
+def especialidad(request):
+    especialidads = Especialidad.objects.all()
+    return render(request, 'especialidads/menu.html', {'Especialidad': especialidads})
+
+def crear_especialidad (request):
+    formulario = especialidadForm(request.POST or None, request.FILES or None)
+    if formulario.is_valid():
+        formulario.save()
+        messages.success(request , "Especialidad Creada correctamente")
+        return redirect('especialidad')
     
+    return render(request, 'especialidads/crear.html', {'formulario': formulario})  
+
+def editar_especialidad (request, id):
+    especialidads = Especialidad.objects.get(id=id)
+    formulario = especialidadFormEdit(request.POST or None, request.FILES or None, instance=especialidads)
+    if formulario.is_valid() and request.POST:
+        formulario.save()
+        messages.success(request , "Especialidad Modificado correctamente")
+        return redirect('especialidad')   
+    return render(request, 'especialidads/editar.html', {'formulario': formulario})
+
+def eliminar_especialidad (request, id):
+    especialidads = Especialidad.objects.get(id=id)
+    try:
+        especialidads.delete1()
+        messages.success(request , "especialidad eliminada correctamente")
+    except IntegrityError:
+        messages.error(request, 'No se puede eliminar esta especialidad')
+    return redirect('especialidad')
+
     
     

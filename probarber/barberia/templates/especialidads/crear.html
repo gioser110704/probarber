@@ -1,0 +1,21 @@
+{% extends "base.html" %} 
+
+{% block Titulo  %} Crear Nueva especialidad {% endblock %}
+   
+{% block Contenido  %}     
+
+<div class="card">
+    <div class="card-header">Ingresar especialidad</div>
+    <div class="card-body">
+        <h4 class="card-title">Datos del especialidad</h4>
+        <br/>
+       
+        {% include 'especialidads/form.html' %}
+        
+    </div>
+    <div class="card-footer text-muted"></div>
+</div>
+
+
+{% endblock %}
+

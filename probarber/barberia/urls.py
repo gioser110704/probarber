@@ -29,5 +29,11 @@ urlpatterns = [
     path('crear_citas', views.crear_citas, name='crear_citas'),
     path('editar_citas/<int:id>', views.editar_citas, name='editar_citas'),
     path('eliminar_citas/<int:id>', views.eliminar_citas, name='eliminar_citas'),
+    
+    path('especialidad', views.especialidad, name='especialidad'),
+    path('crear_especialidads', views.crear_especialidad, name='crear_especialidads'),
+    path('editar_especialidads/<int:id>', views.editar_especialidad, name='editar_especialidads'),
+    path('eliminar_especialidads/<int:id>', views.eliminar_especialidad, name='eliminar_especialidads'),
+
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

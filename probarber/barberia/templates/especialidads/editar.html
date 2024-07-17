@@ -1,0 +1,21 @@
+{% extends "base.html" %} 
+
+{% block Titulo  %} Editar Especialidad {% endblock %}
+   
+{% block Contenido  %}     
+
+<div class="card">
+    <div class="card-header">Editar informacion de la especialidad</div>
+    <div class="card-body">
+        <h4 class="card-title">Datos de la especialidad</h4>
+        <Br>
+       
+        {% include 'especialidads/form.html' %}
+        
+    </div>
+    <div class="card-footer text-muted"></div>
+</div>
+
+
+{% endblock %}
+

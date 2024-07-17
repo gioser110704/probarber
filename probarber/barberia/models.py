@@ -75,6 +75,9 @@ class Especialidad(models.Model):
         managed = False
         db_table = 'especialidad'
         
+    def delete1 (self, using = None, keep_parents = False):
+            super().delete()
+        
 
 
 
