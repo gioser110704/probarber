@@ -1,0 +1,73 @@
+{% extends "base.html" %} 
+
+{% block Titulo  %} Lista de citas {% endblock %}
+   
+{% block Contenido  %}    
+
+{% load static %}
+
+
+<div class="card">
+    <div class="card-header d-flex justify-content-end">
+        <a  name=""id=""class="btn btn-success"href="{% url 'crear_citas'%}" role="button"> <i class="fas fa-plus-circle"></i> Agregar Nuevo Cita </a>
+    </div>
+    <div class="card-body">
+
+        <h3 class="text-center">CITAS</h3>
+        
+        <div
+            class="table-responsive"
+        >
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Cedula Cliente</th>
+                        <th scope="col">Nombre Cliente</th>
+                        <th scope="col">Barbero</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Hora</th>
+                        <th scope="col">Servicio</th>
+                        <th scope="col">Duracion</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Acciones</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    {% for s in cita %}
+                    <tr class="">
+                        <td scope="row">{{ s.0 }}</td>
+                        <td>{{ s.1 }}</td>
+                        <td>{{ s.2 }}</td>
+                        <td>{{ s.3 }}</td>
+                        <td>{{ s.4 }}</td>
+                        <td>{{ s.5 }}</td>
+                        <td>{{ s.6 }}</td>
+                        <td>{{ s.7 }}</td>
+                        <td>{{ s.8 }}$</td>
+                        <td>
+                        <a name="" id="" class="btn btn-info" href="{% url 'editar_citas' s.0 %}"  role="button" ><i class="fas fa-edit"></i></a>
+                        
+                        <a name="" id="" class="btn btn-danger" href="{% url 'eliminar_citas' s.0 %}"  role="button"><i class="fas fa-trash-alt"></i></a>
+                    </td>
+                    </tr>
+                    {% endfor %}
+
+
+                </tbody>
+            </table>
+        </div>
+        
+
+
+    </div>
+    <div class="card-footer text-muted">
+      
+    </div>
+</div>
+
+
+{% endblock %}
+

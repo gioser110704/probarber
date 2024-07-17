@@ -7,14 +7,24 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 
+
+
 class Barbero(models.Model):
     nombre = models.CharField(max_length=50, blank=True, null=True)
     apellido = models.CharField(max_length=50, blank=True, null=True)
     especialidad = models.ForeignKey('Especialidad', models.DO_NOTHING, blank=True, null=True)
+    
+    def __str__(self):
+        return self.nombre + ' ' + self.apellido + ' ' 
 
     class Meta:
         managed = False
         db_table = 'barbero'
+        
+    def delete1 (self, using = None, keep_parents = False):
+            super().delete()
+        
+    
 
 
 class Cita(models.Model):
@@ -27,6 +37,9 @@ class Cita(models.Model):
     class Meta:
         managed = False
         db_table = 'cita'
+        
+    def delete1 (self, using = None, keep_parents = False):
+            super().delete()
 
 
 class Cliente(models.Model):
@@ -37,6 +50,10 @@ class Cliente(models.Model):
     direccion = models.CharField(max_length=100, blank=True, null=True)
     correo = models.CharField(max_length=100, blank=True, null=True)
     fecha_registro = models.DateField(auto_now_add=True, verbose_name = 'Fecha')
+    
+    def __str__(self):
+        return self.nombre + ' ' + self.apellido + '  ' '  V-' + str(self.cedula)
+
 
     class Meta:
         managed = False
@@ -49,10 +66,16 @@ class Cliente(models.Model):
 
 class Especialidad(models.Model):
     descripcion = models.CharField(max_length=255, blank=True, null=True)
+    
+    def __str__(self):
+         fila= self.descripcion
+         return fila
 
     class Meta:
         managed = False
         db_table = 'especialidad'
+        
+
 
 
 class Pago(models.Model):
@@ -68,7 +91,14 @@ class Servicio(models.Model):
     nombre = models.CharField(max_length=50, blank=True, null=True)
     duracion = models.CharField(max_length=50, blank=True, null=True)
     precio = models.DecimalField(max_digits=10, decimal_places=0, blank=True, null=True)
+    
+    def __str__(self):
+         fila= self.nombre
+         return fila
 
     class Meta:
         managed = False
         db_table = 'servicio'
+        
+    def delete1 (self, using = None, keep_parents = False):
+            super().delete()

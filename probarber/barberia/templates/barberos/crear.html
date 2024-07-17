@@ -1,0 +1,21 @@
+{% extends "base.html" %} 
+
+{% block Titulo  %} Registrar Barbero {% endblock %}
+   
+{% block Contenido  %}     
+
+<div class="card">
+    <div class="card-header">Ingresar Barbero</div>
+    <div class="card-body">
+        <h4 class="card-title">Datos del Barbero</h4>
+        <br/>
+       
+        {% include 'barberos/form.html' %}
+        
+    </div>
+    <div class="card-footer text-muted"></div>
+</div>
+
+
+{% endblock %}
+

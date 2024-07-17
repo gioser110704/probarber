@@ -1,0 +1,21 @@
+{% extends "base.html" %} 
+
+{% block Titulo  %} Registrar nueva Cita{% endblock %}
+   
+{% block Contenido  %}     
+
+<div class="card">
+    <div class="card-header">Citas</div>
+    <div class="card-body">
+        <h4 class="card-title">Datos de la cita</h4>
+        <br/>
+       
+        {% include 'citas/form.html' %}
+        
+    </div>
+    <div class="card-footer text-muted"></div>
+</div>
+
+
+{% endblock %}
+

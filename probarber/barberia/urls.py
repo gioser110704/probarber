@@ -15,5 +15,19 @@ urlpatterns = [
     path('editar_clientes/<str:cedula>', views.editar_clientes, name='editar_clientes'), #Recibe un string que ingresa el cedula del cliente a editar
     path('eliminar_clientes/<str:cedula>', views.eliminar_clientes, name='eliminar_clientes'), #Recibe un string que ingresa el cedula del cliente a eliminar
     
+    path('servicios', views.servicio, name='servicios'),
+    path('crear_servicios', views.crear_servicio, name='crear_servicios'),
+    path('editar_servicios/<int:id>', views.editar_servicio, name='editar_servicios'),
+    path('eliminar_servicios/<int:id>', views.eliminar_servicio, name='eliminar_servicios'),
+    
+    path('barberos', views.barbero, name='barberos'),
+    path('crear_barberos', views.crear_barberos, name='crear_barberos'),
+    path('editar_barberos/<int:id>', views.editar_barberos, name='editar_barberos'),
+    path('eliminar_barberos/<int:id>', views.eliminar_barberos, name='eliminar_barberos'),
+    
+    path('citas', views.cita, name='citas'),
+    path('crear_citas', views.crear_citas, name='crear_citas'),
+    path('editar_citas/<int:id>', views.editar_citas, name='editar_citas'),
+    path('eliminar_citas/<int:id>', views.eliminar_citas, name='eliminar_citas'),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

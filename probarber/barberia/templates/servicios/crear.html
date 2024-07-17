@@ -1,0 +1,21 @@
+{% extends "base.html" %} 
+
+{% block Titulo  %} Crear Nuevo Servicio {% endblock %}
+   
+{% block Contenido  %}     
+
+<div class="card">
+    <div class="card-header">Ingresar Servicio</div>
+    <div class="card-body">
+        <h4 class="card-title">Datos del Servicio</h4>
+        <br/>
+       
+        {% include 'servicios/form.html' %}
+        
+    </div>
+    <div class="card-footer text-muted"></div>
+</div>
+
+
+{% endblock %}
+

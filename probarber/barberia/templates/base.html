@@ -83,9 +83,9 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                     <a class="nav-link active" aria-current="page" href="{% url 'menu_clientes'%}" >Clientes</a>
-                    <a class="nav-link" href="#">Servicios</a>
-                    <a class="nav-link" href="#">Citas</a>
-                    <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Barberos</a>
+                    <a class="nav-link" href="{% url 'servicios'%}">Servicios</a>
+                    <a class="nav-link" href="{% url 'barberos'%}" tabindex="-1" aria-disabled="true">Barberos</a>
+                    <a class="nav-link" href="{% url 'citas'%}">Citas</a>
                     <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Especialidades</a>
                 </div>
             </div>

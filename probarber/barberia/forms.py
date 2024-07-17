@@ -92,4 +92,195 @@ class clienteFormEdit(forms.ModelForm):
         model = Cliente
         fields = fields = ['nombre', 'apellido', 'telefono', 'direccion', 'correo']
 
-   
+
+class servicioForm(forms.ModelForm): 
+    
+    nombre = forms.CharField(label = "Duracion del Servicio", widget= forms.TextInput(
+        attrs = {
+            'class': 'form-control',
+            'placeholder': 'Ingrese la Duracion del Servicio',
+            'id': 'duracion',
+            'required' : 'required',  } ))   
+    
+    duracion = forms.CharField(label = "Duracion del Servicio", widget= forms.TextInput(
+        attrs = {
+            'class': 'form-control',
+            'placeholder': 'Ingrese la Duracion del Servicio',
+            'id': 'duracion',
+            'required' : 'required',  } ))   
+    
+    
+    class Meta:
+        model = Servicio
+        fields = '__all__'
+        widgets = {
+            'precio': TextInput(attrs={
+                'readonly': False,
+                'class': 'form-control',
+            })
+        }
+        
+class servicioFormEdit(forms.ModelForm): 
+    
+    nombre = forms.CharField(label = "Duracion del Servicio", widget= forms.TextInput(
+        attrs = {
+            'class': 'form-control',
+            'placeholder': 'Ingrese la Duracion del Servicio',
+            'id': 'duracion',
+            'required' : 'required',  } ))   
+    
+    duracion = forms.CharField(label = "Duracion del Servicio", widget= forms.TextInput(
+        attrs = {
+            'class': 'form-control',
+            'placeholder': 'Ingrese la Duracion del Servicio',
+            'id': 'duracion',
+            'required' : 'required',  } ))   
+    
+    
+    class Meta:
+        model = Servicio
+        fields = ['nombre', 'duracion', 'precio']
+        widgets = {
+            'precio': TextInput(attrs={
+                'readonly': False,
+                'class': 'form-control',
+            })
+        }
+        
+
+
+class barberoForm(forms.ModelForm):
+    nombre = forms.CharField(label = "Nombre del Barbero", widget= forms.TextInput(
+        attrs = {
+            'class': 'form-control',
+            'placeholder': 'Ingrese el nombre del Barbero',
+            'id': 'nombre',
+            'required' : 'required',  } ))         
+    
+    apellido = forms.CharField(label = "Apellido del Barbero", widget= forms.TextInput(
+        attrs = { 'class': 'form-control',
+                 'placeholder': 'Ingrese el apellido del Barbero',
+                 'id': 'descripcion',
+                 'required' : 'required', }  ))   
+    
+
+    
+    class Meta:
+        model = Barbero   #NOMBRE DE LA TABLA
+        fields = '__all__'
+        widgets = {
+        'id_especialidad': forms.Select(  attrs = {
+            'class': 'form-control',
+            'placeholder': 'Categoria del zapato',
+            'id': 'categoria',
+            'required' : 'required',})}
+        
+        
+class barberoFormEdit(forms.ModelForm):
+    nombre = forms.CharField(label = "Nombre del Barbero", widget= forms.TextInput(
+        attrs = {
+            'class': 'form-control',
+            'placeholder': 'Ingrese el nombre del Barbero',
+            'id': 'nombre',
+            'required' : 'required',  } ))         
+    
+    apellido = forms.CharField(label = "Apellido del Barbero,", widget= forms.TextInput(
+        attrs = { 'class': 'form-control',
+                 'placeholder': 'Ingrese el apellido del Barbero',
+                 'id': 'descripcion',
+                 'required' : 'required', }  ))   
+    
+
+    
+    class Meta:
+        model = Barbero   #NOMBRE DE LA TABLA
+        fields = '__all__'
+        widgets = {
+        'id_especialidad': forms.Select(  attrs = {
+            'class': 'form-control',
+            'placeholder': 'especialidad del barbero',
+            'id': 'categoria',
+            'required' : 'required',})}
+        
+        
+        
+        
+class citaForm (forms.ModelForm):
+    fecha = forms.DateField(label = "Fecha de la cita", widget= forms.DateInput(
+        attrs = {
+            'class': 'form-control',
+            'placeholder': 'Ingrese la fecha de la cita',
+            'id': 'nombre',
+            'required' : 'required',  } ))         
+    
+    hora = forms.CharField(label = "Hora de la cita", widget= forms.TextInput(
+        attrs = { 'class': 'form-control',
+                 'placeholder': 'Ingrese la hora de la cita',
+                 'id': 'descripcion',
+                 'required' : 'required', }  ))   
+    
+
+    
+    class Meta:
+        model = Cita  #NOMBRE DE LA TABLA
+        fields = '__all__'
+        widgets = {
+        'cliente_id': forms.Select(  attrs = {
+            'class': 'form-control',
+            'placeholder': 'especialidad del barbero',
+            'id': 'categoria',
+            'required' : 'required',}),
+        
+        'barbero_id': forms.Select(  attrs = {
+            'class': 'form-control',
+            'placeholder': 'especialidad del barbero',
+            'id': 'categoria',
+            'required' : 'required',}),
+        
+        'servicio_id': forms.Select(  attrs = {
+            'class': 'form-control',
+            'placeholder': 'especialidad del barbero',
+            'id': 'categoria',
+            'required' : 'required',}),
+        
+        },
+
+class citaFormEdit(forms.ModelForm):
+    fecha = forms.DateField(label = "Fecha de la cita", widget= forms.DateInput(
+        attrs = {
+            'class': 'form-control',
+            'placeholder': 'Ingrese la fecha de la cita',
+            'id': 'nombre',
+            'required' : 'required',  } ))         
+    
+    hora = forms.CharField(label = "Hora de la cita", widget= forms.TextInput(
+        attrs = { 'class': 'form-control',
+                 'placeholder': 'Ingrese la hora de la cita',
+                 'id': 'descripcion',
+                 'required' : 'required', }  ))   
+    
+
+    
+    class Meta:
+        model = Cita  #NOMBRE DE LA TABLA
+        fields = '__all__'
+        widgets = {
+        'cliente_id': forms.Select(  attrs = {
+            'class': 'form-control',
+            'placeholder': 'especialidad del barbero',
+            'id': 'categoria',
+            'required' : 'required',}),
+        
+        'barbero_id': forms.Select(  attrs = {
+            'class': 'form-control',
+            'placeholder': 'especialidad del barbero',
+            'id': 'categoria',
+            'required' : 'required',}),
+        
+        'servicio_id': forms.Select(  attrs = {
+            'class': 'form-control',
+            'placeholder': 'especialidad del barbero',
+            'id': 'categoria',
+            'required' : 'required',}),
+        
+        },

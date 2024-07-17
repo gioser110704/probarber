@@ -1,0 +1,21 @@
+{% extends "base.html" %} 
+
+{% block Titulo  %} Editar Citas {% endblock %}
+   
+{% block Contenido  %}     
+
+<div class="card">
+    <div class="card-header">Editar informacion de la cita</div>
+    <div class="card-body">
+        <h4 class="card-title">Datos de la cita</h4>
+        <Br>
+       
+        {% include 'citas/form.html' %}
+        
+    </div>
+    <div class="card-footer text-muted"></div>
+</div>
+
+
+{% endblock %}
+
