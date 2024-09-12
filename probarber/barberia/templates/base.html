@@ -85,8 +85,20 @@
                     <a class="nav-link active" aria-current="page" href="{% url 'menu_clientes'%}" >Clientes</a>
                     <a class="nav-link" href="{% url 'servicios'%}">Servicios</a>
                     <a class="nav-link" href="{% url 'barberos'%}" tabindex="-1" aria-disabled="true">Barberos</a>
-                    <a class="nav-link" href="{% url 'citas'%}">Citas</a>
                     <a class="nav-link" href="{% url 'especialidad'%}" tabindex="-1" aria-disabled="true">Especialidades</a>
+                    <a class="nav-link" href="{% url 'citas'%}">Citas</a>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Reportes
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="{% url 'mv'%}">Servicios Mas Vendidos</a></li>
+                        <li><a class="dropdown-item" href="{% url 'ccmc'%}">Clientes Con Mas Compras</a></li>
+                        <li><a class="dropdown-item" href="{% url 'cpm'%}">Citas Por Mes</a></li>
+                        <li><a class="dropdown-item" href="{% url 'bcmc'%}">Mejores Barberos</a></li>
+                      </ul>
+                    </li>
+                    
                 </div>
             </div>
         </div>
@@ -167,5 +179,21 @@
  
 
 </body>
+{% if messages %}.
+              
+{% for message in messages %}
+<script>
+  Swal.fire({
+    icon: '{{ message.tags }}',
+    title: '{{ message }}',
+    showConfirmButton: false,
+    timer: 2000
+  })
+</script>
+{% endfor %}
+
+{% endif %}
+{% block js %}
+{% endblock %}
 
 </html>

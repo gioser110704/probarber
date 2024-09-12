@@ -39,7 +39,7 @@ def eliminar_clientes (request, cedula):
         clientes.delete1()
         messages.success(request , "Cliente eliminado correctamente")
     except IntegrityError:
-        messages.error(request, 'No se puede eliminar este cliente')
+        messages.error(request, 'No se puede eliminar este cliente porque está referenciado en una cita.')
     return redirect('menu_clientes')
 
 def servicio(request):
@@ -105,7 +105,7 @@ def eliminar_barberos  (request, id):
         barberos.delete1()
         messages.success(request , "Barbero eliminado correctamente")
     except IntegrityError:
-        messages.error(request, 'No se puede eliminar este Barbero')
+        messages.error(request, 'No se puede eliminar este barbero porque está referenciado en una cita')
     return redirect('barberos')
 
 
@@ -180,5 +180,58 @@ def eliminar_especialidad (request, id):
         messages.error(request, 'No se puede eliminar esta especialidad')
     return redirect('especialidad')
 
+from django.db import connection
+from django.shortcuts import render
+
+###REPORTES### ###REPORTES### ###REPORTES### ###REPORTES### ###REPORTES### ###REPORTES### ###REPORTES### ###REPORTES### ###
+ 
+def servicios_mas_vendidos(request):
+    with connection.cursor() as cursor:
+        cursor.execute("""
+            SELECT s.nombre AS servicio, COUNT(c.servicio_id) AS cantidad_vendida, SUM(s.precio) AS ingreso_total, s.precio
+            FROM cita c
+            JOIN servicio s ON c.servicio_id = s.id
+            GROUP BY s.nombre, s.precio
+            ORDER BY cantidad_vendida DESC;
+        """)
+        servicios = cursor.fetchall()
+    return render(request, 'reportes/masvendido.html', {'servicios': servicios})
     
-    
+def clientes_que_mas_compran(request):
+    with connection.cursor() as cursor:
+        cursor.execute("""
+            SELECT cl.nombre, cl.apellido, COUNT(c.id) AS citas_realizadas, SUM(s.precio) AS total_gastado
+            FROM cita c
+            JOIN cliente cl ON c.cliente_id = cl.cedula
+            JOIN servicio s ON c.servicio_id = s.id
+            GROUP BY cl.nombre, cl.apellido
+            ORDER BY total_gastado DESC;
+        """)
+        clientes = cursor.fetchall()
+    return render(request, 'reportes/clientes_que_mas_compran.html', {'clientes': clientes})
+
+#para cambiar el mes cambiar el numero  WHERE MONTH(c.fecha) = 
+def citas_por_mes(request):
+    with connection.cursor() as cursor:
+        cursor.execute("""
+            SELECT c.id, cl.cedula, cl.nombre, cl.apellido, c.fecha, c.hora, s.nombre AS servicio, s.precio
+            FROM cita c
+            JOIN cliente cl ON c.cliente_id = cl.cedula
+            JOIN servicio s ON c.servicio_id = s.id
+            WHERE MONTH(c.fecha) = 7
+            ORDER BY c.fecha, c.hora;
+        """)
+        citas = cursor.fetchall()
+    return render(request, 'reportes/citas_por_mes.html', {'citas': citas})
+
+def barberos_mas_solicitados(request):
+    with connection.cursor() as cursor:
+        cursor.execute("""
+            SELECT b.nombre, b.apellido, COUNT(c.id) AS servicios_realizados
+            FROM cita c
+            JOIN barbero b ON c.barbero_id = b.id
+            GROUP BY b.nombre, b.apellido
+            ORDER BY servicios_realizados DESC;
+        """)
+        barberos = cursor.fetchall()
+    return render(request, 'reportes/barberos_mas_solicitados.html', {'barberos': barberos})

@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block Titulo  %} Reporte de venta: {% endblock %}
+
+{% block content %}
+    <script src="{% static 'lib/adminlite/plugins/moment/moment.min.js' %}"></script>
+    <script src="{% static 'lib/adminlite/plugins/daterangepicker/daterangepicker.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'lib/adminlite/plugins/daterangepicker/daterangepicker.css' %}"/>
+    <script src="{% static 'lib/datatables-1.10.20/js/jquery.dataTables.min.js' %}" type="text/javascript"></script>
+
+
+    <link rel="stylesheet" href="{% static 'lib/datatables-1.10.20/plugins/buttons-1.6.1/css/buttons.bootstrap.min.css' %}"/>
+    <script src="{% static 'lib/datatables-1.10.20/plugins/buttons-1.6.1/js/dataTables.buttons.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'lib/datatables-1.10.20/plugins/jszip-2.5.0/jszip.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'lib/datatables-1.10.20/plugins/pdfmake-0.1.36/pdfmake.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'lib/datatables-1.10.20/plugins/pdfmake-0.1.36/vfs_fonts.js' %}" type="text/javascript"></script>
+    <script src="{% static 'lib/datatables-1.10.20/plugins/buttons-1.6.1/js/buttons.html5.min.js' %}" type="text/javascript"></script>
+    
+
+   
+    
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">
+                <h2 class="text-center">SERVICIOS MAS VENDIDOS  <i class="fas fa-chart-line"></i></h2>
+           
+            </h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        
+                    </div>
+                </div>
+            </div>
+            <table class="table table-bordered" id="data">
+                <thead>
+                <tr>
+                    <th scope="col">SERVICIOS</th>
+                    <th scope="col">SERVICIOS HECHOS</th>
+                    <th scope="col">PRECIO UNITARIO</th>
+                    <th scope="col">MONTO TOTAL $</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                    {% for t in servicios %}
+                    <tr class="">
+                        <td scope="row">{{ t.0}}</td>
+                        <td>{{ t.1}}</td>  
+                        <td>{{ t.3 }}$</td>
+                        <td>{{ t.2 }}$</td>
+
+                        
+                        
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+        <div class="card-footer">
+            <a href="{{ list_url }}" class="btn btn-success btn-flat">
+                <i class="fas fa-sync"></i> Actualizar
+            </a>
+        </div>
+    </div>
+{% endblock %}

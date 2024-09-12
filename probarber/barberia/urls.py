@@ -34,6 +34,10 @@ urlpatterns = [
     path('crear_especialidads', views.crear_especialidad, name='crear_especialidads'),
     path('editar_especialidads/<int:id>', views.editar_especialidad, name='editar_especialidads'),
     path('eliminar_especialidads/<int:id>', views.eliminar_especialidad, name='eliminar_especialidads'),
-
+    
+    path('mv/',views.servicios_mas_vendidos, name = 'mv'),
+    path('ccmc/',views.clientes_que_mas_compran, name = 'ccmc'),
+    path('cpm/',views.citas_por_mes, name = 'cpm'),
+    path('bcmc/',views.barberos_mas_solicitados, name = 'bcmc'),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

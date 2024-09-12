@@ -12,7 +12,7 @@ from django.db import models
 class Barbero(models.Model):
     nombre = models.CharField(max_length=50, blank=True, null=True)
     apellido = models.CharField(max_length=50, blank=True, null=True)
-    especialidad = models.ForeignKey('Especialidad', models.DO_NOTHING, blank=True, null=True)
+    especialidad = models.ForeignKey('Especialidad', models.PROTECT, blank=True, null=True)
     
     def __str__(self):
         return self.nombre + ' ' + self.apellido + ' ' 
@@ -32,7 +32,7 @@ class Cita(models.Model):
     barbero = models.ForeignKey(Barbero, models.DO_NOTHING, blank=True, null=True)
     fecha = models.DateField(blank=True, null=True)
     hora = models.CharField(max_length=10, blank=True, null=True)
-    servicio = models.ForeignKey('Servicio', models.DO_NOTHING, blank=True, null=True)
+    servicio = models.ForeignKey('Servicio', models.PROTECT, blank=True, null=True)
 
     class Meta:
         managed = False

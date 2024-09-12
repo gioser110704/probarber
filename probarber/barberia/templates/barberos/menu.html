@@ -1,6 +1,35 @@
 {% extends "base.html" %} 
 
-{% block Titulo  %} Lista de servicios {% endblock %}
+{% block js %}
+{% for Cliente in Barbero %}
+
+<script>
+   function eliminarCliente(id) {
+Swal.fire({
+        "title" : "¿Estas seguro que deseas eliminar al Barbero con el id " +id+ "?",
+        "text" : "Nota: Si el barbero tiene alguna cita, no podra eliminarlo",
+        "icon" : "warning",
+        "showCancelButton" : true,
+        "confirmButtonColor" : "#3085d6",
+        "cancelButtonColor" : "#d33",
+        "confirmButtonText" : "Si, Eliminar",
+        "cancelButtonText" : "No, Cancelar"
+    })
+      .then(function(result) {
+        if (result.isConfirmed) {
+            window.location.href = "/eliminar_barberos/" + id;
+        }
+      });
+
+    }
+
+</script>
+
+{% endfor %}
+
+{% endblock %}
+
+{% block Titulo  %} Lista de Barberos {% endblock %}
    
 {% block Contenido  %}    
 
@@ -41,7 +70,7 @@
                         <td>
                         <a name="" id="" class="btn btn-info" href="{% url 'editar_barberos' s.id %}"  role="button" ><i class="fas fa-edit"></i></a>
                         
-                        <a name="" id="" class="btn btn-danger" href="{% url 'eliminar_barberos' s.id %}"  role="button"><i class="fas fa-trash-alt"></i></a>
+                        <a name="" id="" class="btn btn-danger" href="#" onclick = "eliminarCliente({{ s.id }})" role="button"><i class="fas fa-trash-alt"></i></a>
                     </td>
                     </tr>
                     {% endfor %}
